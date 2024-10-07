@@ -1,8 +1,9 @@
-import Jogador
-import Personagem
-import Skin
-import Chroma
-import Inventario
+from personagem import Personagem
+from skin import Skin
+from chroma import Chroma
+from jogo import Jogo
+from jogador import Jogador
+from loja import Loja
 
 class LojaController:
 
