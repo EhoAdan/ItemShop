@@ -5,7 +5,7 @@ from jogo import Jogo
 from jogador import Jogador
 from loja import Loja
 
-class LojaController:
+class LojaController():
 
     def __init__(self, personagem: Personagem, jogador: Jogador,
                 skin: Skin, chroma: Chroma):
