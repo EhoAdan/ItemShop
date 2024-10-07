@@ -1,6 +1,6 @@
-class Jogo
+class Jogo:
 
-    def __init__(self, jogador: str, admin: str)
+    def __init__(self, jogador: str, admin: str):
         if isinstance(jogador, str):
             self.__jogador = jogador
         if isinstance(admin, str):
@@ -29,6 +29,6 @@ class Jogo
             if jogador not in self.__jogadores:
                 self.__jogadores.append(jogador)
     
-    def banir_jogador(self, jogador: Jogador)
+    def banir_jogador(self, jogador: Jogador):
         #O jogador ainda existe, mas não consegue mais interagir com o jogo
         #(não é possível inserir outro com nome igual)
