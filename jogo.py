@@ -12,7 +12,7 @@ class Jogo
     def jogador(self):
         return self.__jogador
 
-    @origem.setter
+    @jogador.setter
     def jogador(self, jogador):
         self.__jogador = jogador
 
@@ -20,7 +20,7 @@ class Jogo
     def admin(self):
         return self.__admin
 
-    @origem.setter
+    @admin.setter
     def admin(self, admin):
         self.__admin = admin
     
