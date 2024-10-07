@@ -11,7 +11,7 @@ class Skin
     def nome(self):
         return self.__nome
 
-    @origem.setter
+    @nome.setter
     def nome(self, nome):
         self.__nome = nome
 
@@ -19,7 +19,7 @@ class Skin
     def preco(self):
         return self.__preco
 
-    @origem.setter
+    @preco.setter
     def preco(self, preco):
         self.__preco = preco
     
