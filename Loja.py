@@ -1,13 +1,13 @@
-import Personagem
-import Skin
-import Chroma
-import Jogo
-import Jogador
+from personagem import Personagem
+from skin import Skin
+from chroma import Chroma
+from jogo import Jogo
+from jogador import Jogador
 
 
 class Loja:
     
-    def __init__(self, personagem: Personagem, jogador: Jogador, jogo: Jogo, skin: Skins, chroma: Chroma)
+    def __init__(self, personagem: Personagem, jogador: Jogador, jogo: Jogo, skin: Skin, chroma: Chroma):
         if isinstance(personagem, Personagem):
             self.__personagem = personagem
         if isinstance(jogador, Jogador):
