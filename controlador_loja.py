@@ -8,47 +8,35 @@ from loja import Loja
 class LojaController:
 
     def __init__(self, personagem: Personagem, jogador: Jogador,
-                       skin: Skin, chroma: Chroma,
-                       inventario: Inventario):
-                        self.__personagem = personagem
-                        self.__jogador = jogador
-                        self.__skin = skin
-                        self.__chroma = chroma
-                        self.__inventario = inventario
+                skin: Skin, chroma: Chroma):
+                    self.__personagem = personagem
+                    self.__jogador = jogador
+                    self.__skin = skin
+                    self.__chroma = chroma
 
-    def adicionar_personagem(self, personagem: Personagem, jogador: Jogador)
-        if isinstance(personagem, Personagem) and
-           isinstance(jogador, Jogador):
-            personagem = Personagem(preço, nome)
-            if not (any(personagem.nome == nome
-                        for personagem in jogador.__personagens)) and
-                    jogador.saldo >= personagem.preço and
-                    personagem.nome in inventario.__personagens:
-            jogador.saldo = jogador.saldo - personagem.preço
-            jogador.__personagens.append(personagem)
+    def adicionar_personagem(self, personagem_novo: Personagem, jogador: Jogador):
+        if isinstance(personagem_novo, Personagem) and isinstance(jogador, Jogador):
+            if (not (any(personagem_novo.nome == personagem.nome 
+                        for personagem in jogador.__personagens)) and jogador.saldo >= personagem_novo.preço 
+                        and personagem_novo.nome not in jogador.__personagens):
+                jogador.saldo -= personagem_novo.preço
+                jogador.__personagens.append(personagem_novo)
     
-    def adicionar_skin(self, personagem: Personagem, skin: Skin, jogador: Jogador)
-        if isinstance(personagem, Personagem) and
-           isinstance(skin, Skin) and
-           isinstance(jogador, Jogador):
-            skin = Skin(preço, nome)
-            if not (any(skin.nome == nome
-                        for skin in jogador.__skins)) and
-                    jogador.saldo >= skin.preço and
-                    skin.nome in personagem.__skins:
-            jogador.saldo = jogador.saldo - skin.preço
-            jogador.__skins.append(skin)
+    def adicionar_skin(self, personagem: Personagem, skin_nova: Skin, jogador: Jogador):
+        if isinstance(personagem, Personagem) and isinstance(skin_nova, Skin) and isinstance(jogador, Jogador):
+            if not (any(skin_nova.nome == skin.nome
+                        for skin in jogador.skins)) and jogador.saldo >= skin_nova.preço and skin_nova.nome not in personagem.__skins:
+                jogador.saldo -= skin_nova.preço
+                jogador.__skins.append(skin_nova)
     
-    def adicionar_chroma(self, personagem: Personagem, skin: Skin,
-                         chroma: Chroma jogador: Jogador)
-        if isinstance(personagem, Personagem) and
+    def adicionar_chroma(self, personagem: Personagem, skin: Skin, chroma_novo: Chroma, jogador: Jogador):
+        if (isinstance(personagem, Personagem) and
            isinstance(skin, Skin) and
-           isinstance(chroma, Chroma) and
-           isinstance(jogador, Jogador):
-            chroma = Chroma(preço, nome)
-            if not (any(chroma.nome == nome
-                        for chroma in jogador.__chromas)) and
-                    jogador.saldo >= chroma.preço and
-                    chroma.nome in skin.__chromas:
-            jogador.saldo = jogador.saldo - chroma.preço
-            jogador.__chromas.append(chroma)
+           isinstance(chroma_novo, Chroma) and
+           isinstance(jogador, Jogador)):
+            if (not (any(chroma_novo.nome == chroma.nome
+                        for chroma in jogador.chromas)) and
+                    jogador.saldo >= chroma_novo.preço and
+                    chroma_novo.nome in skin.__chromas):
+                jogador.saldo -= chroma_novo.preço
+                jogador.__chromas.append(chroma_novo)
