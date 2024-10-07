@@ -1,4 +1,4 @@
-class Amigo
+class Amigo:
 
     def __init__(self, nome: str)
         if isinstance(nome, str):
