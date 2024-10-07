@@ -1,6 +1,6 @@
 class Chroma:
 
-    def __init__(self, nome: str, preco: int)
+    def __init__(self, nome: str, preco: int):
         if isinstance(nome, str):
             self.__nome = nome
         if isinstance(preco, int):
