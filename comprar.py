@@ -1,6 +1,6 @@
-import Personagem
+from personagem import Personagem
 
-class Comprar (AbstractcomprarController)
+class Comprar (AbstractcomprarController):
     
     def __init__(self, personagem: Personagem, jogador: Jogador)
         if isinstance(jogador, Jogador):
