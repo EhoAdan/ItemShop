@@ -1,6 +1,6 @@
 class Jogador:
     
-    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int, amigo: Amigo):
+    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int):
         if isinstance(nome, str):
             self.__nome = nome
         if isinstance(saldo, int):
@@ -8,7 +8,6 @@ class Jogador:
         if isinstance(dinheiro_gasto, int):
             self.__dinheiro_gasto = dinheiro_gasto
         self.__amigos = []
-        self.__inventario = []
         
     @property
     def nome(self):
@@ -42,16 +41,15 @@ class Jogador:
     def amigo(self, amigo):
         self.__amigo = amigo
     
-    def adicionar_amigo(self, amigo: Amigo):
-        if isinstance(amigo, Amigo):
-            amigo = Amigo(nome, ID(?))
-            if not (any(amigo.nome == nome
+    def adicionar_amigo(self, amigo_novo):
+        if isinstance(amigo_novo, Jogador):
+            if not (any(amigo_novo.nome == amigo.nome
                     for amigo in self.__amigos)):
-                self.__amigos.append(amigo)
+                self.__amigos.append(amigo_novo)
 
-    def excluir_amigo(self, amigo: Amigo):
+    def excluir_amigo(self, amigo_excluir):
         for amigo in self.__amigos:
-            if amigo.nome == nome:
+            if amigo_excluir.nome == amigo.nome:
                 self.__amigos.remove(amigo)
                 break
     
@@ -62,8 +60,9 @@ class Jogador:
             self.saldo += saldo
             self.dinheiro_gasto += round(saldo * 0.02725, 2)
     
-    def presentear(self, inventario: itens.nome, amigo)
+    def presentear(self, inventario, amigo):
         #puxar inventario do amigo
-    def comprar(self, saldo, inventario: itens.nome):
-        
-    
+        pass
+
+    def comprar(self, saldo, inventario):
+        pass
