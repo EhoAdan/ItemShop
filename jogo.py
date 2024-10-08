@@ -1,3 +1,5 @@
+from jogador import Jogador
+
 class Jogo:
 
     def __init__(self, jogador: str, admin: str):
@@ -32,3 +34,4 @@ class Jogo:
     def banir_jogador(self, jogador: Jogador):
         #O jogador ainda existe, mas não consegue mais interagir com o jogo
         #(não é possível inserir outro com nome igual)
+        pass
