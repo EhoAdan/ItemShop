@@ -1,4 +1,4 @@
-class Personagem
+class Personagem:
 
     def __init__(self, nome: str, preco: int):
         if isinstance(nome, str):
@@ -25,7 +25,7 @@ class Personagem
     
     def incluir_skin(self, nome: str):
         if isinstance(nome, str):
-            skin = Skin(nome, ID(?))
+            skin = Skin(nome, ID())
             if not (any(skin.nome == nome
                     for skin in self.__skins)):
                 self.__skins.append(skin)
@@ -35,3 +35,4 @@ class Personagem
             if skin.nome == nome:
                 self.__skins.remove(skin)
                 break
+
