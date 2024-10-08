@@ -5,14 +5,13 @@ from jogo import Jogo
 from jogador import Jogador
 from loja import Loja
 
-class LojaController():
+class LojaController:
 
-    def __init__(self, personagem: Personagem, jogador: Jogador,
-                skin: Skin, chroma: Chroma):
-                    self.__personagem = personagem
+    def __init__(self, jogador: Jogador, personagens = [], skins = [], chromas = []):
+                    self.__personagens = personagens
                     self.__jogador = jogador
-                    self.__skin = skin
-                    self.__chroma = chroma
+                    self.__skins = skins
+                    self.__chromas = chromas
 
     def adicionar_personagem(self, personagem_novo: Personagem, jogador: Jogador):
         if isinstance(personagem_novo, Personagem) and isinstance(jogador, Jogador):
