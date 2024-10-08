@@ -25,7 +25,7 @@ class Skin:
     
     def incluir_chroma(self, nome: str):
         if isinstance(nome, str):
-            chroma = Chroma(nome, ID(?))
+            chroma = Chroma(nome, ID())
             if not (any(chroma.nome == nome
                     for chroma in self.__chromas)):
                 self.__chromas.append(chroma)
