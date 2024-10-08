@@ -20,4 +20,4 @@ class Chroma:
 
     @preco.setter
     def preco(self, preco):
-        self.__preco = preco  
+        self.__preco = preco
