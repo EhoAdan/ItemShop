@@ -19,5 +19,3 @@ class Pessoa:
             self.id = id
             self.email = email
             self.senha = senha
-    
-    
