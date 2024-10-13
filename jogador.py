@@ -1,3 +1,5 @@
+from conta import Conta
+
 class Jogador:
     
     def __init__(self, nome: str, saldo: int, dinheiro_gasto: int):

@@ -1,3 +1,5 @@
+from skin import Skin
+
 class Personagem:
 
     def __init__(self, nome: str, preco: int):
@@ -23,9 +25,9 @@ class Personagem:
     def preco(self, preco):
         self.__preco = preco
     
-    def incluir_skin(self, nome: str):
-        if isinstance(nome, str):
-            skin = Skin(nome, ID())
+    def incluir_skin(self, nome: str, preco: int):
+        if isinstance(nome, str) and isinstance(preco, int):
+            skin = Skin(nome, int)
             if not (any(skin.nome == nome
                     for skin in self.__skins)):
                 self.__skins.append(skin)

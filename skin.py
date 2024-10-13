@@ -1,3 +1,5 @@
+from chroma import Chroma
+
 class Skin:
 
     def __init__(self, nome: str, preco: int):
@@ -25,7 +27,7 @@ class Skin:
     
     def incluir_chroma(self, nome: str):
         if isinstance(nome, str):
-            chroma = Chroma(nome, ID())
+            chroma = Chroma(nome)
             if not (any(chroma.nome == nome
                     for chroma in self.__chromas)):
                 self.__chromas.append(chroma)
