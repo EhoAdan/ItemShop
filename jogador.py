@@ -158,7 +158,7 @@ class Jogador:
     #caso consigamos checar que tipo de objeto temos dentro
     #da função
     def presentear_personagem(self, personagem, amigo):
-        if personagem.nome in self.__personagens and personagem.nome not in amigo.__personagens:
+        if personagem in self.__personagens and personagem not in amigo.__personagens:
             amigo.__personagens.append(personagem)
             self.__personagens.remove(personagem)
         else:
