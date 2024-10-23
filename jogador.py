@@ -1,20 +1,5 @@
 from conta import Conta
 
-class Personagem:
-    
-    def __init__(self, nome: str, preco: int):
-        if isinstance(nome, str):
-            self.__nome = nome
-        if isinstance(preco, int):
-            self.__preco = preco
-    
-    @property
-    def preco(self):
-        return self.__preco
-    
-    @property
-    def nome(self):
-        return self.__nome
 
 class Jogador:
     
@@ -77,7 +62,7 @@ class Jogador:
         return self.__personagens
 
     @personagens.setter
-    def personagens(self, amigos):
+    def personagens(self, personagens):
         self.__personagens = personagens
 
     @property
@@ -147,11 +132,7 @@ class Jogador:
         self.__dinheiro_gasto += round(saldo * 0.02725, 2)
 
     def add_p(self, perso_novo):
-        if not (any(perso_novo.nome == personagem.nome
-                for perso in self.__personagens)):
-            self.__personagens.append(perso_novo)
-        else:
-            print(f"{perso_novo.nome} já está em seu inventário")
+        self.__personagens.append(perso_novo)
     
     #talvez tenhamos que fazer uma função para cada item
     #mas a Prof disse que pode ser possível fazer uma só
@@ -167,17 +148,3 @@ class Jogador:
 
     def comprar(self, saldo, inventario):
         pass
-
-Jogador1 = Jogador("Akmenos", "010101", 0, 0)
-Jogador2 = Jogador("Gabigol", "020202", 0, 0)
-Jogador3 = Jogador("SupaMario", "030303", 0, 0)
-P1 = Personagem("Anaís", 3000)
-P2 = Personagem("Darwin", 450)
-P3 = Personagem("Gumble", 1200)
-
-Jogador1.lista_personagens()
-Jogador1.add_p(P1)
-Jogador1.lista_personagens()
-Jogador1.presentear_personagem(P1, Jogador2)
-Jogador1.lista_personagens()
-Jogador2.lista_personagens()

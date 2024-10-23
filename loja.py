@@ -7,7 +7,7 @@ from admin import Admin
 
 class Loja:
  
-    def __init__(self, jogador: Jogador, jogo: Jogo, personagens = [], skins = [], chromas = []):
+    def __init__(self, jogador: Jogador, personagens = [], skins = [], chromas = []):
         if isinstance(personagens, list):
             self.__personagens = personagens
         if isinstance(jogador, Jogador):

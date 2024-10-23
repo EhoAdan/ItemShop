@@ -18,15 +18,18 @@ Escolha sua opção:
             except ValueError:
                 print("Favor inserir uma opção válida.")
     
-    def tela_seleciona_pessoa(self):
-        pass
-
-    def tela_compra_personagem(self, num_personagens):
+    def tela_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
+        "Função que generaliza seleção de opções retornando int"
         while True:
             try:
-                opcao_usuario = int(input("""Selecione o personagem pelo número: """))
-                if not -1 < opcao_usuario < num_personagens + 1:
+                opcao_usuario = int(input(mensagem))
+                if not limite_inferior <= opcao_usuario <= limite_superior:
                     raise ValueError
-                return opcao_usuario
             except ValueError:
                 print("Favor inserir um valor válido.")
+
+    def tela_seleciona_pessoa(self, num_pessoas):
+        self.tela_selecionar_opcao_int("Selecione a pessoa pelo número: ", num_pessoas + 1, 0)
+
+    def tela_selecao_personagem(self, num_personagens):
+        self.tela_selecionar_opcao_int("Selecione o personagem pelo número: ", num_personagens + 1, 0)
