@@ -25,11 +25,12 @@ Escolha sua opção:
                 opcao_usuario = int(input(mensagem))
                 if not limite_inferior <= opcao_usuario <= limite_superior:
                     raise ValueError
+                return opcao_usuario
             except ValueError:
                 print("Favor inserir um valor válido.")
 
     def tela_seleciona_pessoa(self, num_pessoas):
-        self.tela_selecionar_opcao_int("Selecione a pessoa pelo número: ", num_pessoas + 1, 0)
+        return self.tela_selecionar_opcao_int("Selecione a pessoa pelo número: ", num_pessoas, 0)
 
     def tela_selecao_personagem(self, num_personagens):
-        self.tela_selecionar_opcao_int("Selecione o personagem pelo número: ", num_personagens + 1, 0)
+        return self.tela_selecionar_opcao_int("Selecione o personagem pelo número: ", num_personagens, 1)

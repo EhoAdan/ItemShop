@@ -3,11 +3,9 @@ from conta import Conta
 
 class Jogador:
     
-    def __init__(self, nome: str, id: str, saldo: int, dinheiro_gasto: int):
+    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int):
         if isinstance(nome, str):
             self.__nome = nome
-        if isinstance(id, str):
-            self.__id = id
         if isinstance(saldo, int):
             self.__saldo = saldo
         if isinstance(dinheiro_gasto, int):
@@ -24,14 +22,6 @@ class Jogador:
     @nome.setter
     def nome(self, nome):
         self.__nome = nome
-    
-    @property
-    def id(self):
-        return self.__id
-
-    @id.setter
-    def id(self, id):
-        self.__id = id
 
     @property
     def saldo(self):

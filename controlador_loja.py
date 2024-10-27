@@ -8,13 +8,14 @@ from tela_loja import TelaLoja
 class LojaController:
 
     def __init__(self, loja = None, usuario = Jogador):
+        # Acho que dá pra tirar o atributo jogador ou do controlador ou da loja
         if not loja or isinstance(loja, Loja):
             self.__loja = loja
         self.__tela_loja = TelaLoja()
         if isinstance(usuario, Jogador):
             self.__usuario = usuario
 
-    def adicionar_personagem_jogador(self, personagem_novo: Personagem, jogador: Jogador):
+    def adicionar_personagem_jogador(self):
         """Checa se é a classe necessária pra tudo e daí checa se o personagem existe,
         se o jogador já tem o personagem e se o saldo do jogador é suficiente, similar
         para outras de adicionar ao jogador.
@@ -28,36 +29,35 @@ Selecione um personagem:""")
             i = 1
             for personagem in self.__loja.personagens:
                 num_cada_personagem[i] = personagem
-                print(f"{i}: {personagem.nome} por {personagem.__preco} pontos.")
+                print(f"{i}: {personagem.nome} por {personagem.preco} pontos.")
                 i += 1
-            print(f"{i + 1}: Retornar")
+            print(f"{i}: Retornar")
             while True:
-                personagem_novo = self.__tela_loja.tela_compra_personagem(i)
-                if personagem_novo == i + 1:
+                personagem_novo = self.__tela_loja.tela_selecao_personagem(i)
+                if personagem_novo == i:
                     # Retorna para o menu anterior caso o usuário queira
                     return None
                 # Acessa o personagem baseado no dicionário e no número retornado
-                personagem_novo = num_cada_personagem[self.__tela_loja.tela_compra_personagem(i)]
-                if not personagem_novo.__preco > self.__usuario.__saldo:
+                personagem_novo = num_cada_personagem[personagem_novo]
+                if not personagem_novo.preco > self.__usuario.saldo:
                     break
-                print(f"Compra inválida, você tem {self.__usuario.__saldo} pontos e o personagem custa {personagem_novo.__preco} pontos, tente novamente.")
-        num_cada_pessoa = {self.__usuario: 0}
+                print(f"Compra inválida, você tem {self.__usuario.saldo} pontos e o personagem custa {personagem_novo.preco} pontos, tente novamente.")
+        num_cada_pessoa = {0: self.__usuario}
         j = 1
-        print("0: Presentear à si mesmo")
-        for amigo in self.__usuario.__amigos:
+        print("0: Comprar para si mesmo")
+        for amigo in self.__usuario.amigos:
             num_cada_pessoa[j] = amigo
             print(f"{j}: {amigo.__nome}")
             j += 1
-        print(f"{j + 1}: Retornar")
+        print(f"{j}: Retornar")
         recebedor_presente = self.__tela_loja.tela_seleciona_pessoa(j)
-        if recebedor_presente == j + 1:
+        if recebedor_presente == j:
             return None
         recebedor_presente = num_cada_pessoa[recebedor_presente]
         if any(personagem_novo.__nome == personagem.__nome 
-               for personagem in recebedor_presente.__personagens):
+               for personagem in recebedor_presente.personagens):
             print("Usuário já possui este personagem.")
             return None
-        recebedor_presente.add_p(personagem_novo)
 
         """Provavelmente implementar compra de skins e chromas vai ser bem parecido
         mas com mais seleções no caminho da compra (pra qual personagem você quer a skin
@@ -65,10 +65,12 @@ Selecione um personagem:""")
 
 
         if (not (any(personagem_novo.nome == personagem.nome 
-                 for personagem in jogador.__personagens)) and jogador.saldo >= personagem_novo.preco 
-                 and personagem_novo.nome not in jogador.__personagens):
-            jogador.saldo -= personagem_novo.preco
-            jogador.__personagens.append(personagem_novo)
+                 for personagem in self.__usuario.personagens)) and self.__usuario.saldo >= personagem_novo.preco 
+                 and personagem_novo.nome not in self.__usuario.personagens):
+            self.__usuario.saldo -= personagem_novo.preco
+            self.__usuario.add_p(personagem_novo)
+        print(f"""Você acaba de comprar {personagem_novo.nome} para {recebedor_presente.nome}.
+Você gastou {personagem_novo.preco} e possui {self.__usuario.saldo} pontos""")    
   
     def adicionar_skin_jogador(self, personagem: Personagem, skin_nova: Skin, jogador: Jogador):
         if isinstance(personagem, Personagem) and isinstance(skin_nova, Skin) and isinstance(jogador, Jogador):
