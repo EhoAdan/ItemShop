@@ -1,5 +1,4 @@
-from conta import Conta
-
+import personagem
 
 class Jogador:
     
@@ -127,21 +126,6 @@ class Jogador:
 
     def add_p(self, perso_novo):
         self.__personagens.append(perso_novo)
-    
-    def add_s(self, skin_nova):
-        self.__skins.append(skin_nova)
-    
-    #talvez tenhamos que fazer uma função para cada item
-    #mas a Prof disse que pode ser possível fazer uma só
-    #caso consigamos checar que tipo de objeto temos dentro
-    #da função
-    def presentear_personagem(self, personagem, amigo):
-        if personagem in self.__personagens and personagem not in amigo.__personagens:
-            amigo.__personagens.append(personagem)
-            self.__personagens.remove(personagem)
-        else:
-            print(f"Você não tem {personagem.nome} ou seu amigo já possui {personagem.nome}")
-        pass
 
-    def comprar(self, saldo, inventario):
-        pass
+
+
