@@ -1,5 +1,6 @@
-from conta import Conta
-
+import chroma
+import personagem
+import skin
 
 class Jogador:
     
@@ -123,18 +124,38 @@ class Jogador:
 
     def add_p(self, perso_novo):
         self.__personagens.append(perso_novo)
-    
-    #talvez tenhamos que fazer uma função para cada item
-    #mas a Prof disse que pode ser possível fazer uma só
-    #caso consigamos checar que tipo de objeto temos dentro
-    #da função
-    def presentear_personagem(self, personagem, amigo):
-        if personagem in self.__personagens and personagem not in amigo.__personagens:
-            amigo.__personagens.append(personagem)
-            self.__personagens.remove(personagem)
+
+    #Tentativa de fazer uma função só pra presente
+    def presentear(self, item, amigo):
+        if isinstance(item, personagem.Personagem):
+            if personagem in self.__personagens and personagem not in amigo.__personagens:
+                amigo.__personagens.append(personagem)
+                self.__personagens.remove(personagem)
+            else:
+                if personagem not in self.__personagens:
+                    print(f"Você não tem {personagem.nome}")
+                elif personagem in amigo.__personagens:
+                        print(f"Seu amigo já possui {personagem.nome}")
+        elif isinstance(item, skin.Skin):
+            if skin in self.__skin and skin not in amigo.__skin:
+                amigo.__skin.append(skin)
+                self.__skin.remove(skin)
+            else:
+                if skin not in self.__skin:
+                    print(f"Você não tem {skin.nome}")
+                elif skin in amigo.__skin:
+                    print(f"Seu amigo já possui {skin.nome}")
+        elif isinstance (item, chroma.Ch232roma):
+            if chroma in self.__chroma and chroma not in amigo.__chroma:
+                amigo.__chroma.append(chroma)
+                self.__chroma.remove(chroma)
+            else:
+                if chroma not in self.__chroma:
+                    print(f"Você não tem {chroma.nome}")
+                elif chroma in amigo.__chroma:
+                    print(f"Seu amigo já possui {chroma.nome}")
         else:
-            print(f"Você não tem {personagem.nome} ou seu amigo já possui {personagem.nome}")
-        pass
+            print("O item selecionado não é presenteável")
 
     def comprar(self, saldo, inventario):
         pass
