@@ -25,6 +25,14 @@ class Skin:
     def preco(self, preco):
         self.__preco = preco
     
+    @property
+    def chromas(self):
+        return self.__chromas
+    
+    @chromas.setter
+    def chromas(self, chromas):
+        self.__chromas = chromas
+    
     def incluir_chroma(self, nome: str):
         if isinstance(nome, str):
             chroma = Chroma(nome)

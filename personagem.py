@@ -25,6 +25,14 @@ class Personagem:
     def preco(self, preco):
         self.__preco = preco
     
+    @property
+    def skins(self):
+        return self.__skins
+    
+    @skins.setter
+    def skins(self, skins):
+        self.__skins = skins
+    
     def incluir_skin(self, nome: str, preco: int):
         if isinstance(nome, str) and isinstance(preco, int):
             skin = Skin(nome, int)
