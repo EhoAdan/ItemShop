@@ -1,3 +1,6 @@
+import TelaConta
+
+
 class Conta:
 
     def __init__(self, nome, email, senha):
@@ -7,6 +10,9 @@ class Conta:
             self.__email = email
             self.__senha = senha
     
+    jogadores = []
+    admins = []
+
     @property
     def nome(self):
         return self.__nome
@@ -14,7 +20,7 @@ class Conta:
     @nome.setter
     def nome(self, nome):
         self.__nome = nome
-
+    
     @property
     def email(self):
         return self.__email
