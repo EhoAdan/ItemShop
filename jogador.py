@@ -3,7 +3,7 @@ from conta import Conta
 
 class Jogador:
     
-    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int):
+    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int = 0):
         if isinstance(nome, str):
             self.__nome = nome
         if isinstance(saldo, int):
@@ -72,13 +72,17 @@ class Jogador:
         self.__chromas = chromas
 
     #Funciona
+    # Gabriel: Adicionei uma checagem pra não se adicionar como amigo e diminuí a quantidade
+    # de aninhamento nas checagens
     def adicionar_amigo(self, amigo_novo):
-        if isinstance(amigo_novo, Jogador):
-            if not (any(amigo_novo.nome == amigo.nome
-                    for amigo in self.__amigos)):
-                self.__amigos.append(amigo_novo)
-            else:
-                print(f"{amigo_novo.nome} já é seu amigo")
+        if not isinstance(amigo_novo, Jogador):
+            print("Houve uma tentativa de adicionar um não-jogador como amigo.")
+        elif amigo_novo.nome == self.__nome:
+            print("Você não pode se adicionar como amigo.")
+        elif any(amigo_novo.nome == amigo.nome for amigo in self.__amigos):
+            print(f"{amigo_novo.nome} já é seu amigo.")
+        else:
+            self.__amigos.append(amigo_novo)
 
     #Funciona
     def excluir_amigo(self, amigo_excluir):
@@ -123,6 +127,9 @@ class Jogador:
 
     def add_p(self, perso_novo):
         self.__personagens.append(perso_novo)
+    
+    def add_s(self, skin_nova):
+        self.__skins.append(skin_nova)
     
     #talvez tenhamos que fazer uma função para cada item
     #mas a Prof disse que pode ser possível fazer uma só

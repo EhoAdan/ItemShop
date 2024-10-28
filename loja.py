@@ -12,9 +12,9 @@ class Loja:
             self.__personagens = personagens
         if isinstance(jogador, Jogador):
             self.__jogador = jogador
-        if isinstance(skins, Skin):
+        if isinstance(skins, list):
             self.__skins = skins
-        if isinstance(chromas, Chroma):
+        if isinstance(chromas, list):
             self.__chromas = chromas
 
     @property
@@ -26,9 +26,9 @@ class Loja:
         return self.__personagens
 
     @property
-    def skin(self):
-        return self.__skin
+    def skins(self):
+        return self.__skins
 
     @property
-    def chroma(self):
-        return self.__chroma
+    def chromas(self):
+        return self.__chromas
