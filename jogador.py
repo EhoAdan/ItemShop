@@ -126,6 +126,6 @@ class Jogador:
 
     def add_p(self, perso_novo):
         self.__personagens.append(perso_novo)
-
-
-
+    
+    def add_s(self, skin_nova):
+        self.__skins.append(skin_nova)
