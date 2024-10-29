@@ -215,8 +215,9 @@ Você gastou {chroma_novo.preco} e possui {self.__usuario.saldo} pontos""")
             #Pelo que eu entendi, isso deixa a tela aberta até dar o retorno
             lista_opcoes[self.__tela_loja.tela_opcoes()]()"""
 
-amale = Jogador("Amale", 9999999)
-tchali = Jogador("Tchali")
+amale = Jogador("Amale", "emailJog1@bla.com", "senhaJog1", 9999999)
+tchali = Jogador("Tchali", "emailJog2@bla.com", "senhaJog2")
+JãoPédeSabão = Jogador("JãoPédeSabão", "emailJog3@bla.com", "senhaJog3")
 ornn = Personagem("Ornn", 4800)
 ornn_trovao = Skin("Ornn Deus do Trovão", 900)
 loja = Loja(amale, [ornn], [ornn_trovao])
@@ -224,5 +225,6 @@ lojatela = TelaLoja()
 lojactrl = LojaController(loja, amale)
 ornn.skins = [ornn_trovao]
 amale.adicionar_amigo(tchali)
+amale.adicionar_amigo(JãoPédeSabão)
 lojactrl.comprar_personagem_jogador()
 lojactrl.comprar_skin_jogador()
