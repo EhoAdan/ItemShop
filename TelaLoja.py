@@ -1,5 +1,5 @@
 class TelaLoja():
-    def tela_opcoes(self):
+    def loja_opcoes(self):
         print("""-------- Loja ---------
 Escolha sua opção:
 1- Comprar um campeão
