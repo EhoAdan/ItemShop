@@ -2,7 +2,7 @@ import personagem
 
 class Jogador:
     
-    def __init__(self, nome: str, saldo: int, dinheiro_gasto: int = 0):
+    def __init__(self, nome: str, saldo: int = 0, dinheiro_gasto: int = 0):
         if isinstance(nome, str):
             self.__nome = nome
         if isinstance(saldo, int):
@@ -129,3 +129,6 @@ class Jogador:
     
     def add_s(self, skin_nova):
         self.__skins.append(skin_nova)
+    
+    def add_c(self, chroma_novo):
+        self.__chromas.append(chroma_novo)
