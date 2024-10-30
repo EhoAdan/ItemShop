@@ -3,7 +3,8 @@ from skin import Skin
 from chroma import Chroma
 from jogador import Jogador
 from loja import Loja
-from TelaLoja import TelaLoja
+from tela_loja import TelaLoja
+import time
 
 class LojaController:
 

@@ -19,6 +19,7 @@ class Jogador:
         self.__personagens = []
         self.__skins = []
         self.__chromas = []
+        self.__historico_compras = []
 
     @property
     def nome(self):
@@ -75,10 +76,19 @@ class Jogador:
     @chromas.setter
     def chromas(self, chromas):
         self.__chromas = chromas
+    
+    @property
+    def historico_compras(self):
+        return self.__historico_compras
+    
+    @historico_compras.setter
+    def historico_compras(self, historico_compras):
+        self.__historico_compras = historico_compras
 
     #Funciona
     # Gabriel: Adicionei uma checagem pra não se adicionar como amigo e diminuí a quantidade
     # de aninhamento nas checagens
+    # Provavelmente isso tudo abaixo vai ter que mandar pro controlador
     def adicionar_amigo(self, amigo_novo):
         if not isinstance(amigo_novo, Jogador):
             print("Houve uma tentativa de adicionar um não-jogador como amigo.")
@@ -138,3 +148,24 @@ class Jogador:
     
     def add_c(self, chroma_novo):
         self.__chromas.append(chroma_novo)
+    
+    def adicionar_compra_historico(self, compra_dados):
+        self.__historico_compras.append(compra_dados)
+    
+    def exibir_historico(self):
+        for compra in self.__historico_compras:
+            print(compra)
+    
+    def encontrar_compra_historico(self, dado):
+        # exemplo: encontrar_compra_historico("ornn")
+        resultado = None
+        pass
+
+    def alterar_compra_historico(self, entrada, mudanca):
+        # Pega o índice da entrada a mudar, encontra a entrada e daí muda ela pra mudança
+        self.__historico_compras(self.encontrar_compra_historico(entrada).index()) = mudanca
+    
+    def excluir_compra_historico(self, entrada):
+        self.__historico_compras.pop(entrada)
+
+        
