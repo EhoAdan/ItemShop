@@ -1,19 +1,25 @@
-import personagem
+from personagem import Personagem
+
 
 class Jogador:
     
-    def __init__(self, nome: str, saldo: int = 0, dinheiro_gasto: int = 0):
+    def __init__(self, nome: str, email: str, senha: str, saldo: int = 0, dinheiro_gasto: int = 0):
         if isinstance(nome, str):
             self.__nome = nome
+        if isinstance(email, str):
+            self.__email = email
+        if isinstance(senha, str):
+            self.__senha = senha
         if isinstance(saldo, int):
             self.__saldo = saldo
         if isinstance(dinheiro_gasto, int):
             self.__dinheiro_gasto = dinheiro_gasto
+
         self.__amigos = []
         self.__personagens = []
         self.__skins = []
         self.__chromas = []
-        
+
     @property
     def nome(self):
         return self.__nome
@@ -29,7 +35,7 @@ class Jogador:
     @saldo.setter
     def saldo(self, saldo):
         self.__saldo = saldo
-    
+
     @property
     def dinheiro_gasto(self):
         return self.__dinheiro_gasto
@@ -37,7 +43,7 @@ class Jogador:
     @dinheiro_gasto.setter
     def dinheiro_gasto(self, dinheiro_gasto):
         self.__dinheiro_gasto = dinheiro_gasto
-    
+
     @property
     def amigos(self):
         return self.__amigos
@@ -45,7 +51,7 @@ class Jogador:
     @amigos.setter
     def amigos(self, amigos):
         self.__amigos = amigos
-    
+
     @property
     def personagens(self):
         return self.__personagens
