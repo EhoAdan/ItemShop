@@ -1,9 +1,8 @@
-from TelaConta import TelaConta
+from tela_conta import TelaConta
 from conta import Conta
-import conta
-import TelaConta
 
-class ContraladorConta:
+
+class ControladorConta:
 
     def __init__(self):
 
