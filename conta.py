@@ -1,4 +1,4 @@
-import TelaConta
+from tela_conta import TelaConta
 
 
 class Conta:

@@ -17,7 +17,7 @@ Escolha sua opção:
                 return opcao_usuario
             except ValueError:
                 print("Favor inserir uma opção válida.")
-    
+
     def tela_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
         "Função que generaliza seleção de opções retornando int"
         while True:

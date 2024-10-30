@@ -138,7 +138,7 @@ Você gastou {skin_nova.preco} e possui {self.__usuario.saldo} pontos""")
         else:
             print("Houve um erro na quantidade de personagens e/ou skins na loja.")
    
-    def comprar_chroma_jogador(self, skin_chroma: Skin, chroma_novo: Chroma, jogador: Jogador):
+    def comprar_chroma_jogador(self):
         if len(self.__loja.personagens) != 0 and len(self.__loja.skins):
             recebedor_presente = self.selecao_amigo()
             if not recebedor_presente:
@@ -200,20 +200,20 @@ Você gastou {chroma_novo.preco} e possui {self.__usuario.saldo} pontos""")
                 skin.chromas.append(chroma_novo)
     
     """Protótipo de uma função de retornar para a tela do sistema (Inclusive, vai precisar passar
-    o controlador do sistema como um atributo)
+    o controlador do sistema como um atributo)"""
     def retornar(self):
-        self.__controlador_sistema.abre_tela()"""
-    
-    """Protótipo de invocador de tela
+        pass
+        #self.__controlador_sistema.abre_tela()
+
     def abre_tela(self):
-        lista_opcoes = {1: self.compra_personagem_jogador(personagem, jogador),
-                        2: self.compra_skin_jogador(personagem, skin, jogador),
-                        3: self.compra_chroma_jogador(skin, personagem, jogador),
+        lista_opcoes = {1: self.comprar_personagem_jogador,
+                        2: self.comprar_skin_jogador,
+                        3: self.comprar_chroma_jogador,
                         0: self.retornar}
         continua = True
         while continua:
             #Pelo que eu entendi, isso deixa a tela aberta até dar o retorno
-            lista_opcoes[self.__tela_loja.tela_opcoes()]()"""
+            lista_opcoes[self.__tela_loja.tela_opcoes()]()
 
 amale = Jogador("Amale", 9999999)
 tchali = Jogador("Tchali")
@@ -224,5 +224,4 @@ lojatela = TelaLoja()
 lojactrl = LojaController(loja, amale)
 ornn.skins = [ornn_trovao]
 amale.adicionar_amigo(tchali)
-lojactrl.comprar_personagem_jogador()
-lojactrl.comprar_skin_jogador()
+lojactrl.abre_tela()
