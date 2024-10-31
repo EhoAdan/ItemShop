@@ -1,5 +1,5 @@
-class TelaSistema:
-    def tela_opcoes(self):
+class TelaSistema():
+    def menu_opcoes(self):
         pass
     """Placeholder:
         print("-------- SisLivros ---------")

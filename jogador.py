@@ -4,17 +4,12 @@ from personagem import Personagem
 class Jogador:
     
     def __init__(self, nome: str, email: str, senha: str, saldo: int = 0, dinheiro_gasto: int = 0):
-        if isinstance(nome, str):
-            self.__nome = nome
-        if isinstance(email, str):
-            self.__email = email
-        if isinstance(senha, str):
-            self.__senha = senha
-        if isinstance(saldo, int):
-            self.__saldo = saldo
-        if isinstance(dinheiro_gasto, int):
-            self.__dinheiro_gasto = dinheiro_gasto
-
+        # acho que a gente faz essa checagem de tipos na hora de criar a conta
+        self.__nome = nome
+        self.__email = email
+        self.__senha = senha
+        self.__saldo = saldo
+        self.__dinheiro_gasto = dinheiro_gasto
         self.__amigos = []
         self.__personagens = []
         self.__skins = []
