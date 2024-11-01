@@ -7,7 +7,7 @@ Escolha sua opção:
 3- Comprar um chroma
 0- Sair do sistema
 """)
-        self.tela_selecionar_opcao_int("Selecione uma opção:", 3, 0)
+        return self.tela_selecionar_opcao_int("Selecione uma opção: ", 3, 0)
 
     def tela_selecionar_opcao_int(self, mensagem, limite_superior, limite_inferior):
         "Função que generaliza seleção de opções retornando int"

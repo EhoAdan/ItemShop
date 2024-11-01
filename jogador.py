@@ -158,7 +158,7 @@ class Jogador:
 
     def alterar_compra_historico(self, entrada, mudanca):
         # Pega o índice da entrada a mudar, encontra a entrada e daí muda ela pra mudança
-        self.__historico_compras(self.encontrar_compra_historico(entrada).index()) = mudanca
+        self.__historico_compras[self.encontrar_compra_historico(entrada).index()] = mudanca
     
     def excluir_compra_historico(self, entrada):
         self.__historico_compras.pop(entrada)

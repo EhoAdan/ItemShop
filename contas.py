@@ -1,7 +1,7 @@
 class Contas:
 
-    def __init__(self):
-        self.__jogadores = []
+    def __init__(self, jogadores = []):
+        self.__jogadores = jogadores
         self.__admins = []
 
     @property

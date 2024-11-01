@@ -6,15 +6,14 @@ from loja import Loja
 from tela_loja import TelaLoja
 import time
 
-class LojaController:
+class ControladorLoja:
 
-    def __init__(self, loja = None, usuario = Jogador):
+    def __init__(self, loja = None):
         # Acho que dá pra tirar o atributo jogador ou do controlador ou da loja
         if not loja or isinstance(loja, Loja):
             self.__loja = loja
         self.__tela_loja = TelaLoja()
-        if isinstance(usuario, Jogador):
-            self.__usuario = usuario
+        self.__usuario = self.__loja.jogador
 
     def selecao_amigo(self):
         num_cada_pessoa = {1: self.__usuario}
@@ -200,30 +199,27 @@ Você gastou {chroma_novo.preco} e possui {self.__usuario.saldo} pontos""")
                 self.__loja.chromas.append(chroma_novo)
                 skin.chromas.append(chroma_novo)
     
-    """Protótipo de uma função de retornar para a tela do sistema (Inclusive, vai precisar passar
-    o controlador do sistema como um atributo)
     def retornar(self):
-        self.__controlador_sistema.abre_tela()"""
+        # Por enquanto, sai de tudo, mas quero achar um jeito de voltar pra tela do sistema
+        quit()
     
-    """Protótipo de invocador de tela
     def abre_tela(self):
-        lista_opcoes = {1: self.compra_personagem_jogador(personagem, jogador),
-                        2: self.compra_skin_jogador(personagem, skin, jogador),
-                        3: self.compra_chroma_jogador(skin, personagem, jogador),
+        lista_opcoes = {1: self.comprar_personagem_jogador,
+                        2: self.comprar_skin_jogador,
+                        3: self.comprar_chroma_jogador,
                         0: self.retornar}
-        continua = True
-        while continua:
+        while True:
             #Pelo que eu entendi, isso deixa a tela aberta até dar o retorno
-            lista_opcoes[self.__tela_loja.tela_opcoes()]()"""
+            lista_opcoes[self.__tela_loja.loja_opcoes()]()
+            
 
-amale = Jogador("Amale", 9999999)
-tchali = Jogador("Tchali")
+amale = Jogador("Amale", "amale@gmail.com", "amale123", 9999999)
+tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123")
 ornn = Personagem("Ornn", 4800)
 ornn_trovao = Skin("Ornn Deus do Trovão", 900)
 loja = Loja(amale, [ornn], [ornn_trovao])
-lojatela = TelaLoja()
-lojactrl = LojaController(loja, amale)
+# lojatela = TelaLoja()
+lojactrl = ControladorLoja(loja)
 ornn.skins = [ornn_trovao]
-amale.adicionar_amigo(tchali)
-lojactrl.comprar_personagem_jogador()
-lojactrl.comprar_skin_jogador()
+# amale.adicionar_amigo(tchali)
+# lojactrl.abre_tela()
