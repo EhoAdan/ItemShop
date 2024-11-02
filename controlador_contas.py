@@ -2,6 +2,8 @@ from tela_contas import TelaConta
 from contas import Contas
 from jogador import Jogador
 from loja import Loja
+from tela_jogador import TelaJogador
+
 
 
 class DadoErradoError(Exception):
@@ -23,10 +25,11 @@ class ControladorContas:
     def tela_conta(self):
         return self.__tela_conta
     
-    def pesquisa_nomes(self, usuario):
-        for registrado in self.__contas.jogadores:
-            if registrado.nome == usuario:
-                return usuario
+    def pesquisa_emails(self, email_inserido):
+        for email_registrado in self.__contas.jogadores:
+            if email_registrado.email == email_inserido:
+                #Temos um erro aqui. Ele retorna o e-mail inserido, e não o Jogador ao qual ele pertence
+                return email_registrado
         return None
     
     def registrar(self):
@@ -86,18 +89,26 @@ Sua senha é: {senha}
     def login(self):
         while True:
             try:
-                usuario = input("Insira seu email: ")
-                senha = input("(Insira sua senha: ")
-                achou_usuario = self.pesquisa_nomes(usuario)
-                if not achou_usuario:
+                email_inserido = input("Insira seu email: ")
+                achou_email_inserido = self.pesquisa_emails(email_inserido)
+                if not achou_email_inserido:
                     print("Usuário não encontrado.")
                     raise DadoErradoError
-                if senha != achou_usuario.senha:
+                senha = input("Insira sua senha: ")
+                if senha != achou_email_inserido.senha:
                     print("Senha incorreta.")
                     raise DadoErradoError
-                break
+                return self.jogador_acoes()
             except DadoErradoError:
                 pass
         # Gabriel: Não sei bem o que retornar no login por enquanto.
         # Adan: Acho que retorna as ações que o usuario teria. Jogar, Loja (comprar, presentear etc), Amigos (adicionar, excluir) etc.
-        return True
+
+    def jogador_acoes(self):
+        acao = {0: self.__controlador_jogador.fechar_jogo,
+                1: self.__controlador_jogador.jogar_partida,
+                2: self.__controlador_jogador.abrir_loja,
+                3: self.__controlador_jogador.gerenciar_amigos,
+                4: self.__controlador_jogador.excluir_conta}
+        while True:
+            acao[self.__tela_jogador.jogador_opcoes()]()
