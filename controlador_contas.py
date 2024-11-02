@@ -1,6 +1,8 @@
 from tela_contas import TelaConta
 from contas import Contas
 from jogador import Jogador
+from loja import Loja
+
 
 class DadoErradoError(Exception):
     # Provavelmente é bom jogar isso pra outro arquivo mas fica aqui por enquanto
@@ -31,16 +33,19 @@ class ControladorContas:
         while True:
             # Caso não surja o NameError, ou seja, ter o email certo, quebra o loop
             try:
+                #Funciona
                 email = str(input("Digite seu endereço de e-mail: "))
-                if (not any(caractere == "@" for caractere in email) or
-                    not (email[-4:] == ".com" or email[-7:] == ".com.br")):
-                    # Idealmente, a gente checaria se tem algo depois do @ e antes do .com, mas não sei como
+                if any(email_usado.email == email for email_usado in self.__contas.jogadores):
+                    print("E-mail já está em uso")
+                    raise NameError
+                if ("@" not in email or email[0] == "@" or email[-1] == "@"):
                     raise NameError
                 break
             except NameError:
                 print("Favor inserir um e-mail válido")
         while True:
             try:
+                #Funciona
                 nome = str(input("Digite seu nome de usuário: "))
                 if any(usuario_existe.nome == nome for usuario_existe in self.__contas.jogadores):
                     print("Nome de usuário já existe")
@@ -50,6 +55,7 @@ class ControladorContas:
                 print("Favor inserir um nome válido")
         while True:
             try:
+                #Funciona
                 senha = input("""Digite sua senha
 Ela deve possuir:
 Ao menos 8 caracteres
@@ -59,7 +65,7 @@ Ao menos uma letra
                 if len(senha) < 8:
                     print("Senha muito curta!")
                     raise NameError
-                if not any(caractere.isnumeric for caractere in senha):
+                if not any(caractere.isnumeric() for caractere in senha):
                     print("Senha não possui número!")
                     raise NameError
                 if not any(caractere.isalpha() for caractere in senha):
@@ -68,15 +74,20 @@ Ao menos uma letra
                 break
             except NameError:
                 print("Favor inserir uma senha válida")
+        jogador_novo = nome #Dessa forma evitamos de ter um item jogador_novo sendo modificado na lista toda vez que tentamos criar outro
         jogador_novo = Jogador(nome, email, senha)
         self.__contas.jogadores.append(jogador_novo)
+        print(f"""Nova conta criada com sucesso!
+Seu nome de Jogador é: {nome}
+Seu e-mail é: {email}
+Sua senha é: {senha}
+""")
 
     def login(self):
         while True:
             try:
-                usuario = input("Insira o usuário ou email: ")
-                senha = input("""(Requisitos: mais de 8 caracteres, ao menos uma letra e um número)
-Insira a senha: """)
+                usuario = input("Insira seu email: ")
+                senha = input("(Insira sua senha: ")
                 achou_usuario = self.pesquisa_nomes(usuario)
                 if not achou_usuario:
                     print("Usuário não encontrado.")
@@ -87,5 +98,6 @@ Insira a senha: """)
                 break
             except DadoErradoError:
                 pass
-        # Não sei bem o que retornar no login por enquanto
+        # Gabriel: Não sei bem o que retornar no login por enquanto.
+        # Adan: Acho que retorna as ações que o usuario teria. Jogar, Loja (comprar, presentear etc), Amigos (adicionar, excluir) etc.
         return True
