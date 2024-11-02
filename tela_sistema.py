@@ -2,7 +2,7 @@ class TelaSistema():
     
     def menu_opcoes(self):
         print("""-------- Entrada ---------
-0- Fechar o programa
+0- Fechar o Jogo
 1- Registrar uma conta nova
 2- Fazer login em uma conta
 """)
@@ -16,4 +16,4 @@ class TelaSistema():
                     raise ValueError
                 return opcao_usuario
             except ValueError:
-                print("Favor inserir um valor válido.")
+                print("Favor inserir uma opção válida.")
