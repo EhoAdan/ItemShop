@@ -14,3 +14,9 @@ class ControladorJogador:
     @property
     def jogador_tela(self):
         return self.__jogador_tela
+    
+    def jogar(self):
+        self.__jogador.partidas_jogadas += 1
+    
+    def abrir_loja(self):
+        pass
