@@ -8,7 +8,7 @@ class Skin:
         if isinstance(preco, int):
             self.__preco = preco
         self.__chromas = []
-    
+
     @property
     def nome(self):
         return self.__nome
@@ -24,15 +24,15 @@ class Skin:
     @preco.setter
     def preco(self, preco):
         self.__preco = preco
-    
+
     @property
     def chromas(self):
         return self.__chromas
-    
+
     @chromas.setter
     def chromas(self, chromas):
         self.__chromas = chromas
-    
+
     def incluir_chroma(self, nome: str):
         if isinstance(nome, str):
             chroma = Chroma(nome)

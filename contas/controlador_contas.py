@@ -1,7 +1,7 @@
-from tela_contas import TelaConta
-from contas import Contas
-from jogador import Jogador
-from loja import Loja
+from contas.tela_contas import TelaConta
+from contas.contas import Contas
+from jogador.jogador import Jogador
+from loja.loja import Loja
 
 
 class DadoErradoError(Exception):
@@ -22,13 +22,13 @@ class ControladorContas:
     @property
     def tela_conta(self):
         return self.__tela_conta
-    
+
     def pesquisa_nomes(self, usuario):
         for registrado in self.__contas.jogadores:
             if registrado.nome == usuario:
                 return usuario
         return None
-    
+
     def registrar(self):
         while True:
             # Caso não surja o NameError, ou seja, ter o email certo, quebra o loop

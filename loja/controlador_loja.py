@@ -1,9 +1,9 @@
 from personagem import Personagem
 from skin import Skin
 from chroma import Chroma
-from jogador import Jogador
-from loja import Loja
-from tela_loja import TelaLoja
+from jogador.jogador import Jogador
+from loja.loja import Loja
+from loja.tela_loja import TelaLoja
 import time
 
 class ControladorLoja:
@@ -174,14 +174,14 @@ Você gastou {chroma_novo.preco} e possui {self.__usuario.saldo} pontos""")
             print("Houve um erro na quantidade de personagens e/ou skins e/ou chromas na loja.")
 
     
-    def adicionar_personagem_jogo(self, personagem_novo: Personagem):
+    def adicionar_personagem(self, personagem_novo: Personagem):
         if isinstance(personagem_novo, Personagem):
             if (not (any(personagem_novo.nome == personagem.nome 
                      for personagem in self.__loja.personagens))
                 and personagem_novo.nome not in self.__loja.jogador.__personagens):
                 self.__loja.personagens.append(personagem_novo)
     
-    def adicionar_skin_jogo(self, skin_nova: Skin, personagem: Personagem):
+    def adicionar_skin_personagem(self, skin_nova: Skin, personagem: Personagem):
         if (isinstance(skin_nova, Skin) and
             isinstance(personagem, Personagem) and
             any(personagem.nome == personagem_jogo.nome 
@@ -189,8 +189,8 @@ Você gastou {chroma_novo.preco} e possui {self.__usuario.saldo} pontos""")
             any(skin_nova.nome == skin_jogo.nome for skin_jogo in personagem.__skins)):
                 personagem.skins.append(skin_nova)
                 self.__loja.skins.append(skin_nova)
-    
-    def adicionar_chroma_jogo(self, skin: Skin, chroma_novo: Chroma):
+
+    def adicionar_chroma_skin(self, skin: Skin, chroma_novo: Chroma):
         if (isinstance(skin, Skin) and
             isinstance(chroma_novo, Chroma) and
             any(skin.nome == personagem_jogo.nome 

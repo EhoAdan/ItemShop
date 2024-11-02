@@ -1,5 +1,5 @@
-from jogador import Jogador
-from tela_jogador import TelaJogador
+from jogador.jogador import Jogador
+from jogador.tela_jogador import TelaJogador
 
 class ControladorJogador:
 
