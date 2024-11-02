@@ -28,11 +28,22 @@ class ControladorSistema:
     def tela_sistema(self):
         return self.__tela_sistema
 
+    @property
+    def controlador_conta(self):
+        return self.__controlador_conta
+    
     def login_ou_registrar(self):
-        login_on = {0: exit,
+        login_on = {0: exit, #Seria legal colocar uma mensagem 'jogo encerrado' aqui, mas o loop do While tá me complicando kk
                     1: self.__controlador_contas.registrar,
                     2: self.__controlador_contas.login}
         while True:
             login_on[self.__tela_sistema.menu_opcoes()]()
 
+amale = Jogador("Amale", "amale@gmail.com", "amale123", 9999999)
+tchali = Jogador("Tchali", "tchali123@gmail.com.br", "tchali123")
+teste = Jogador("adan", "t@t", "123")
+ornn = Personagem("Ornn", 4800)
+ornn_trovao = Skin("Ornn Deus do Trovão", 900)
+loja = Loja(amale, [ornn], [ornn_trovao])
+contas = Contas([amale, tchali, teste])
 sistema = ControladorSistema(loja, contas)
